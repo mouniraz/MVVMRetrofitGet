@@ -79,3 +79,30 @@ override val pokemonRepository: PokemonRepository by lazy {
         NetworkPokemonRepository(retrofitService)
     }
 ```
+7. the code of AppContainer is like this
+   ```kotlin
+   
+interface AppContainer {
+    val pokemonRepository:PokemonRepository
+
+}
+
+class DefaultAppContainer : AppContainer {
+    override val pokemonRepository: PokemonRepository by lazy {
+        NetworkPokemonRepository(retrofitService)
+    }
+    private val BASE_URL =
+        "https://android-kotlin-fun-mars-server.appspot.com"
+
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create()) // For JSON parsing
+        .baseUrl(BASE_URL)
+        .build()
+
+    val retrofitService: ApiService by lazy {
+        retrofit.create(ApiService::class.java)
+    }
+
+
+}
+   ```
