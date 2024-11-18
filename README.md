@@ -184,6 +184,7 @@ The APPLICATION_KEY is part of the ViewModelProvider.AndroidViewModelFactory.Com
         }
     }
 ```
+4. Open the theme/PokApp.kt file, inside the PokApp() function, update the viewModel() to use the factory
 ```kotlin
  Surface(
             modifier = Modifier.fillMaxSize()
