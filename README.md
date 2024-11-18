@@ -132,3 +132,11 @@ class NetworkPokemonRepository(private val pokemonApiService: ApiService
 object PockApi {
     }
 ```
+# Step3:Attach application container to the app
+1. Right-click on com.example.yourapp and select New > Kotlin Class/File.
+2. In the dialog, enter PokemonApplication. This class inherits from the application object, so you need to add it to the class declaration.
+```kotlin
+import android.app.Application
+class PokemonApplication : Application() {
+}
+```
