@@ -127,3 +127,8 @@ class NetworkPokemonRepository(private val pokemonApiService: ApiService
 
 }
 ```
+11. remove
+```kotlin    
+object PockApi {
+    }
+```
