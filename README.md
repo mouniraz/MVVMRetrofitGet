@@ -191,3 +191,4 @@ The APPLICATION_KEY is part of the ViewModelProvider.AndroidViewModelFactory.Com
         ) {
             val pokViewModel: PokViewModel = viewModel(factory = PokViewModel.Factory)
 ```
+5.Run the app to confirm it is still behaving as it was previously.
