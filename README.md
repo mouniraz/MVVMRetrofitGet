@@ -157,4 +157,36 @@ class PokemonApplication : Application() {
         android:name=".PokemonApplication"
         android:allowBackup="true"
 ```
+# Step4: Add Repository to View Model
+1. In the class declaration for ViewModel, add a private constructor parameter pokemonRepository of type PokemonRepository. The value for the constructor parameter comes from the application container because the app is now using dependency injection.
+```kotlin
+class PokViewModel(private val pokemonRepository: PokemonRepository):ViewModel() 
+```
+2. in the method getAllPock remove
+```kotlin
+val pokemonRepository = NetworkPokemonRepository()
+```
+3. Because the Android framework does not allow a ViewModel to be passed values in the constructor when created, we implement a ViewModelProvider.Factory object, which lets us get around this limitation.
+The Factory pattern is a creational pattern used to create objects. The PokemonModel.Factory object uses the application container to retrieve the pokemonRepository, and then passes this repository to the ViewModel when the ViewModel object is created.
 
+Below the function getAllPokemon(), type the code for the companion object.
+A companion object helps us by having a single instance of an object that is used by everyone without needing to create a new instance of an expensive object. This is an implementation detail, and separating it lets us make changes without impacting other parts of the app's code.
+
+The APPLICATION_KEY is part of the ViewModelProvider.AndroidViewModelFactory.Companion object and is used to find the app's PokemonApplication object, which has the container property used to retrieve the repository used for dependency injection.
+```kotlin
+ companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val application = (this[APPLICATION_KEY] as PokemonApplication)
+                val pokemonRepository = application.container.pokemonRepository
+                PokViewModel(pokemonRepository = pokemonRepository)
+            }
+        }
+    }
+```
+```kotlin
+ Surface(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            val pokViewModel: PokViewModel = viewModel(factory = PokViewModel.Factory)
+```
