@@ -80,8 +80,8 @@ override val pokemonRepository: PokemonRepository by lazy {
     }
 ```
 7. the code of AppContainer is like this
-   ```kotlin
-   
+```kotlin
+  
 interface AppContainer {
     val pokemonRepository:PokemonRepository
 
@@ -104,5 +104,5 @@ class DefaultAppContainer : AppContainer {
     }
 
 
-}
-   ```
+} 
+```
