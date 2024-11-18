@@ -39,5 +39,16 @@ Replace the line "val listResult = PockApi.retrofitService.getAllPokemon()" with
    val pokemonRepository = NetworkPokemonRepository()
    val listResult = pokemonRepository.getAllPokemon()
 ```
-# Step2: 
+8. Run the app. Notice that the results displayed are the same as the previous results.
+Instead of the ViewModel directly making the network request for the data, the repository provides the data. The ViewModel no longer directly references the MarsApi code.
+# Step2: Dependency Injection
+### Create an Application Container
+1. Right-click on the data package and select New > Kotlin Class/File.
+2. In the dialog, select Interface, and enter AppContainer as the name of the interface.
+3. Inside the AppContainer interface, add an abstract property called pokemonRepository of type PokemonRepository. 
 
+```kotlin
+interface AppContainer {
+    val pokemonRepository:PokemonRepository
+}
+```
