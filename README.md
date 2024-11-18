@@ -106,3 +106,24 @@ class DefaultAppContainer : AppContainer {
 
 } 
 ```
+8. Open the data/PokemonRepository.kt file. We are now passing retrofitService to NetworkPokemonRepository, and you need to modify the NetworkPokemonRepository class.
+9. In the NetworkPokemonRepository class declaration, add the constructor parameter pokemonApiService as shown in the following code.
+```kotlin
+class NetworkPokemonRepository(private val pokemonApiService: ApiService
+):PokemonRepository{
+    override suspend fun getAllPokemon(): List<PockemonsItem> {
+        return pokemonApiService.getAllPokemon()
+    }
+
+}
+```
+10. In the NetworkPokemonRepository class, in the getAllPokemon() function, change the return statement to retrieve data from PokemonApiService.
+```kotlin
+class NetworkPokemonRepository(private val pokemonApiService: ApiService
+):PokemonRepository{
+    override suspend fun getAllPokemon(): List<PockemonsItem> {
+        return pokemonApiService.getAllPokemon()
+    }
+
+}
+```
