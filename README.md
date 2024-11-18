@@ -52,3 +52,30 @@ interface AppContainer {
     val pokemonRepository:PokemonRepository
 }
 ```
+4. Below the interface definition, create a class called DefaultAppContainer that implements the interface AppContainer.
+5. From network/ApiService.kt, move the code for variables BASE_URL, retrofit, and retrofitService into the DefaultAppContainer class so that they are all located within the container that maintains the dependencies.
+```kotlin
+class DefaultAppContainer : AppContainer {
+    
+    private val BASE_URL =
+        "https://android-kotlin-fun-mars-server.appspot.com"
+
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create()) // For JSON parsing
+        .baseUrl(BASE_URL)
+        .build()
+
+    val retrofitService: ApiService by lazy {
+        retrofit.create(ApiService::class.java)
+    }
+
+
+}
+```
+
+6.override val pokemonRepository as below
+```kotlin
+override val pokemonRepository: PokemonRepository by lazy {
+        NetworkPokemonRepository(retrofitService)
+    }
+```
