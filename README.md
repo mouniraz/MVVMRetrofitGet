@@ -17,6 +17,27 @@ interface PokemonRepository {
     suspend fun  getAllPokemon():List<PockemonsItem>
 }
 ```
-   
+6. Below the interface declaration, create a class named NetworkPokemonRepository for implementing the PokemonRepository interface.
+7. Inside the PokemonRepository class, override the abstract function getAllPokemon(). This function returns the data from calling MarsApi.ApiService.ApiService()
+```kotlin
+interface PokemonRepository {
+    suspend fun  getAllPokemon():List<PockemonsItem>
+}
+class NetworkPokemonRepository:PokemonRepository{
+    override suspend fun getAllPokemon(): List<PockemonsItem> {
+        return PockApi.retrofitService.getAllPokemon()
+    }
+
+}
+```
+7. Next, you need to update the ViewModel code to use the repository to get the data as Android best practices suggest.
+
+Open the viewmodel/ViewModel.kt file.
+Scroll down to the getAllPokemon() method.
+Replace the line "val listResult = PockApi.retrofitService.getAllPokemon()" with the following code:
+```kotlin
+   val pokemonRepository = NetworkPokemonRepository()
+   val listResult = pokemonRepository.getAllPokemon()
+```
 # Step2: 
 
