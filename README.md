@@ -154,7 +154,6 @@ class PokemonApplication : Application() {
 4. You need to update the Android manifest so the app uses the application class you just defined. Open the manifests/AndroidManifest.xml file.
 5. In the application section, add the android:name attribute with a value of application class name ".PokemonApplication".
 ```kotlin
-
 <application
         android:name=".PokemonApplication"
         android:allowBackup="true"
