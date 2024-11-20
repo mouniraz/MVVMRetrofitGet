@@ -10,7 +10,7 @@ First, you need to create the repository class. The Android developers guide sta
 1. Right-click on com.example.yourapp and select New > Package.
 2. In the dialog, enter data.
 3. Right-click on the data package and select New > Kotlin Class/File.
-4. In the dialog, select Interface and enter MarsPhotosRepository as the name of the interface.
+4. In the dialog, select Interface and enter PokemonRepository as the name of the interface.
 5. Inside the PokemonRepository interface, add an abstract function called getAllPokemon(), which returns a list of MPokemon objects. It is called from a coroutine, so declare it with suspend.
 ```kotlin
 interface PokemonRepository {
