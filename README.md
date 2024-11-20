@@ -92,7 +92,7 @@ class DefaultAppContainer : AppContainer {
         NetworkPokemonRepository(retrofitService)
     }
     private val BASE_URL =
-        "https://android-kotlin-fun-mars-server.appspot.com"
+        "https://tyradex.vercel.app/api/v1/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create()) // For JSON parsing
