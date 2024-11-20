@@ -18,7 +18,7 @@ interface PokemonRepository {
 }
 ```
 6. Below the interface declaration, create a class named NetworkPokemonRepository for implementing the PokemonRepository interface.
-7. Inside the PokemonRepository class, override the abstract function getAllPokemon(). This function returns the data from calling MarsApi.ApiService.ApiService()
+7. Inside the PokemonRepository class, override the abstract function getAllPokemon(). This function returns the data from calling PockApi.retrofitService
 ```kotlin
 interface PokemonRepository {
     suspend fun  getAllPokemon():List<PockemonsItem>
